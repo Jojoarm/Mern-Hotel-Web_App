@@ -1,8 +1,8 @@
-export type Room = {
+export type RoomType = {
   _id: string;
   images: string[];
   pricePerNight: number;
-  hotel: Hotel;
+  hotel: HotelType;
   roomType: string;
   amenities: string[];
   isAvailable: boolean;
@@ -11,19 +11,19 @@ export type Room = {
   __v: number;
 };
 
-export type Hotel = {
+export type HotelType = {
   _id: string;
   name: string;
   address: string;
   contact: string;
-  owner: User;
+  owner: UserType;
   city: string;
   createdAt: string;
   updatedAt: string;
   __v: number;
 };
 
-export type User = {
+export type UserType = {
   _id: string;
   username: string;
   email: string;
@@ -35,7 +35,7 @@ export type User = {
   recentSearchedCities: string[];
 };
 
-export type ExclusiveOffer = {
+export type ExclusiveOfferType = {
   _id: number;
   title: string;
   description: string;
@@ -44,7 +44,7 @@ export type ExclusiveOffer = {
   image: string;
 };
 
-export type Testimonial = {
+export type TestimonialType = {
   id: number;
   name: string;
   address: string;
@@ -53,15 +53,15 @@ export type Testimonial = {
   review: string;
 };
 
-export type AmenityIconMap = {
+export type AmenityIconMapType = {
   [key: string]: string;
 };
 
-export type UserBookingData = {
+export type UserBookingDataType = {
   _id: string;
-  user: User;
-  room: Room;
-  hotel: Hotel;
+  user: UserType;
+  room: RoomType;
+  hotel: HotelType;
   checkInDate: string;
   checkOutDate: string;
   totalPrice: number;
@@ -73,8 +73,8 @@ export type UserBookingData = {
   updatedAt: string;
 };
 
-export type DashboardData = {
+export type DashboardDataType = {
   totalBookings: number;
   totalRevenue: number;
-  bookings: UserBookingData[];
+  bookings: UserBookingDataType[];
 };

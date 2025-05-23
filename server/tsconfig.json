@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "./dist",
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "types": ["node", "express"],
+    // include express to load typings
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */

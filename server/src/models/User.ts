@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { User } from '../../types/types';
+import { UserType } from '../../../shared/types';
 
 const userSchema = new mongoose.Schema(
   {
@@ -13,6 +13,6 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const User = mongoose.model<User>('User', userSchema);
+const User = mongoose.model<UserType>('User', userSchema);
 
 export default User;
