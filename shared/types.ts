@@ -35,6 +35,12 @@ export type UserType = {
   recentSearchedCities: string[];
 };
 
+export type UserDataType = {
+  recentSearchedCities: string[];
+  role: string;
+  success: boolean;
+};
+
 export type ExclusiveOfferType = {
   _id: number;
   title: string;

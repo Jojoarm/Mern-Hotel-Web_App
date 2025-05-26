@@ -3,6 +3,7 @@ import Booking from '../models/Booking';
 import { RoomType } from '../../../shared/types';
 import Room from '../models/Room';
 import Hotel from '../models/Hotel';
+import transporter from '../config/nodemailer';
 
 //Function to check availability of room
 type CheckAvailabilityProps = {
@@ -87,6 +88,32 @@ export const createBooking = async (
       checkOutDate,
       totalPrice,
     });
+
+    const mailOptions = {
+      from: process.env.SENDER_EMAIL,
+      to: req.user.email,
+      subject: 'Hotel Booking Details',
+      html: `
+            <h2>Your Booking Details</h2>
+            <p>Dear ${req.user.username},</p>
+            <p>Thank you for your booking! Here are your booking details:</p>
+            <ul>
+                <li><strong>Booking ID:</strong> ${booking._id}</li>
+                <li><strong>Hotel Name:</strong> ${booking.hotel.name}</li>
+                <li><strong>Location:</strong> ${booking.hotel.address}</li>
+                <li><strong>Date: </strong> ${booking.checkInDate.toString()}</li>
+                <li><strong>Booking Amount:</strong> ${
+                  process.env.CURRENCY || '$'
+                } ${booking.totalPrice} /night</li>
+            </ul>
+            <p>We look forward to welcoming you!</p>
+            <p>If you need to make any changes, feel free to contact us.</p>
+        `,
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('Message sent:', info);
 
     res.json({ success: true, message: 'Booking created successfully!' });
   } catch (error) {

@@ -33,7 +33,7 @@ export const createRoom = async (req: Request, res: Response): Promise<any> => {
       images,
     });
 
-    res.json({ success: true, mesage: 'Room created successfully' });
+    res.json({ success: true, message: 'Room created successfully' });
   } catch (error) {
     res.json({ success: false, message: (error as Error).message });
   }

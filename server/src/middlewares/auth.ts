@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import User from '../models/User';
 import { UserType } from '../../../shared/types';
+import { HydratedDocument } from 'mongoose';
 
 declare global {
   namespace Express {
@@ -8,7 +9,7 @@ declare global {
       auth: {
         userId: string;
       };
-      user: UserType;
+      user: HydratedDocument<UserType>;
     }
   }
 }

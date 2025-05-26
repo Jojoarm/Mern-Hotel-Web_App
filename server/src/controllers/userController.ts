@@ -21,7 +21,7 @@ export const storeRecentSearchedCities = async (
 ): Promise<void> => {
   try {
     const { recentSearchedCity } = req.body;
-    const user = await req.body;
+    const user = req.user;
     if (user.recentSearchedCities.length < 3) {
       user.recentSearchedCities.push(recentSearchedCity);
     } else {
